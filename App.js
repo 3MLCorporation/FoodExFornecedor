@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Platform, Image, Text, View, ScrollView, Button } from 'react-native';
 
+import Login from "./screens/login";
+
 import firebase from 'react-native-firebase';
 
 export default class App extends React.Component {
@@ -17,49 +19,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={styles.container}>
-        <Image source={require('./assets/logofoodex.png')} style={[styles.logo]} />
-        <Text style={styles.welcome}>
-          Welcome to the React Native{'\n'}Firebase starter project!
-        </Text>
-          <Button
-              title="Click me"
-              color="red"
-
-          />
-        <Text style={styles.instructions}>
-          To get started, edit Apepe.jotaésse
-        </Text>
-        {Platform.OS === 'ios' ? (
-          <Text style={styles.instructions}>
-            Press Cmd+R to reload,{'\n'}
-            Cmd+D or shake for dev menu
-          </Text>
-        ) : (
-          <Text style={styles.instructions}>
-            Double tap R on your keyboard to reload,{'\n'}
-            Cmd+M or shake for dev menu
-          </Text>
-        )}
-        <View style={styles.modules}>
-          <Text style={styles.modulesHeader}>The following Firebase modules are enabled:</Text>
-          {firebase.admob.nativeModuleExists && <Text style={styles.module}>Admob</Text>}
-          {firebase.analytics.nativeModuleExists && <Text style={styles.module}>Analytics</Text>}
-          {firebase.auth.nativeModuleExists && <Text style={styles.module}>Authentication</Text>}
-          {firebase.crashlytics.nativeModuleExists && <Text style={styles.module}>Crashlytics</Text>}
-          {firebase.firestore.nativeModuleExists && <Text style={styles.module}>Cloud Firestore</Text>}
-          {firebase.messaging.nativeModuleExists && <Text style={styles.module}>Cloud Messaging</Text>}
-          {firebase.links.nativeModuleExists && <Text style={styles.module}>Dynamic Links</Text>}
-          {firebase.iid.nativeModuleExists && <Text style={styles.module}>Instance ID</Text>}
-          {firebase.notifications.nativeModuleExists && <Text style={styles.module}>Notifications</Text>}
-          {firebase.perf.nativeModuleExists && <Text style={styles.module}>Performance Monitoring</Text>}
-          {firebase.database.nativeModuleExists && <Text style={styles.module}>Realtime Database</Text>}
-          {firebase.config.nativeModuleExists && <Text style={styles.module}>Remote Config</Text>}
-          {firebase.storage.nativeModuleExists && <Text style={styles.module}>Storage</Text>}
-        </View>
-        </View>    
-      </ScrollView>
+      <Login/>
     );
   }
 }

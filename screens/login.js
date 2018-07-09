@@ -3,21 +3,21 @@ import { AppRegistry, StyleSheet, Dimensions, TextInput, Platform, Image, Text, 
 
 import firebase from 'react-native-firebase';
 
-export default class login extends Component{
+export default class Login extends Component{
 	render() {
 		return (
 				<View style={estilo.principal}>
 
-					<Image source={require('../assets/logofoodex.png')} style={estilo.logo}
+					<Image source={require('../assets/logofoodex.png')} style={estilo.logo}/>
 
 					<View>
-						<h2>Email: </h2>
-						<TextInput style={estilo.entrada} placeholder="email">
+						<Text>Email: </Text>
+						<TextInput style={estilo.entrada} placeholder="email"/>
 					</View>
 
 					<View>
-						<h2>Senha: </h2>
-						<TextInput secureTextEntry={true} style={estilo.entrada} placeholder="senha">
+						<Text>Senha: </Text>
+						<TextInput secureTextEntry={true} style={estilo.entrada} placeholder="senha"/>
 					</View>
 
 					<View>
@@ -37,7 +37,6 @@ const estilo = StyleSheet.create({
 		width: 300,
 		height: 40,
 		borderColor: 'gray',
-		borderWidth: 0,
 		backgroundColor: 'white',
 		borderWidth: 1,
 		marginTop: 10
