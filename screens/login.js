@@ -1,59 +1,58 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Dimensions, TextInput, Platform, Image, Text, View, ScrollView, Button, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, Button} from 'react-native';
+import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 
 import firebase from 'react-native-firebase';
-
-const botaoEsqueceuSenha = () => {
-	Alert.alert('Informar email para redefinição da senha...');
-};
 
 export default class Login extends Component{
 	render() {
 		return (
-				<View style={estilo.principal}>
+            <Container style={estilo.header}>
+                <Header>
+					<Left/> <Body> <Title>FoodEx+</Title> </Body> <Right />
+                </Header>
+
+                <Content style={estilo.principal}>
 
 					<Image source={require('../assets/logofoodex.png')} style={estilo.logo}/>
 
-					<View>
-						<Text>Email: </Text>
-						<TextInput style={estilo.entrada} placeholder="email"/>
-					</View>
+                    <Form style={estilo.entrada}>
+                        <Item floatingLabel>
+                            <Label>Email</Label>
+                            <Input />
+                        </Item>
+                        <Item floatingLabel last>
+                            <Label>Senha</Label>
+                            <Input />
+                        </Item>
+                    </Form>
 
-					<View>
-						<Text>Senha: </Text>
-						<TextInput secureTextEntry={true} style={estilo.entrada} placeholder="senha"/>
-					</View>
+					<Button transparent dark>
+						<Text> Esqueceu a sua senha? </Text>
+					</Button>
 
-					<TouchableOpacity onPress={botaoEsqueceuSenha}>
-						<View>
-							<Text style={estilo.botaoTexto}> Esqueceu a senha?</Text>
-						</View>
-					</TouchableOpacity>
+					<Button style={estilo.botao}>
+						<Text> LOGIN </Text>
+					</Button>
 
-					<View>
-						<TouchableOpacity style={estilo.botao}>
-							<Text> LOGIN </Text>
-						</TouchableOpacity>
-					</View>
+					<Button transparent dark>
+						<Text> Não tem uma conta? CADASTRE-SE </Text>
+					</Button>
 
-                    <View>
-                        <Text style={estilo.centerText}>---------- ou ----------</Text>
-                    </View>
+    			</Content>
 
-                    <TouchableOpacity>
-                        <View>
-                            <Text style={estilo.botaoTextoCenter}> Não tem uma conta? CADASTRE-SE</Text>
-                        </View>
-                    </TouchableOpacity>
-
-				</View>
+            </Container>
 
 			)
 	}
 }
 
 const estilo = StyleSheet.create({
-    principal:{
+    header:{
+        backgroundColor: '#f78f03'
+    },
+
+	principal:{
         backgroundColor: 'white',
         flex: 1,
         justifyContent: 'center',
@@ -81,26 +80,5 @@ const estilo = StyleSheet.create({
 		paddingHorizontal: 40,
 		marginTop: 20
 	},
-
-	botaoTexto:{
-		marginTop: 5,
-        color:"#212121",
-		backgroundColor: "transparent",
-		textAlign: "left",
-		paddingLeft: 15
-	},
-
-    centerText:{
-	    marginTop: 10,
-        textAlign: "center",
-        color:"#212121"
-    },
-
-    botaoTextoCenter:{
-        marginTop: 10,
-        color:"#212121",
-        backgroundColor: "transparent",
-        textAlign: "center",
-    }
 
 });

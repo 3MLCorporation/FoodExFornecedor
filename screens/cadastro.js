@@ -1,45 +1,49 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Dimensions, TextInput, Platform, Image, Text, View, ScrollView, Button, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, TextInput, Text, View, Button} from 'react-native';
+import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 
 import firebase from 'react-native-firebase';
 
 export default class cadastro extends Component{
 	render() {
         return (
-            <View style={estilo.principal}>
+            <Container>
+                <Header style={estilo.header}>
+                    <Left/> <Body> <Title>FoodEx+</Title> </Body> <Right />
+                </Header>
 
-				<View>
-                    <Text>Email: </Text>
-                    <TextInput style={estilo.entrada} placeholder="email"/>
-                </View>
+                <Content style={estilo.principal}>
 
-                <View>
-                    <Text>CPF: </Text>
-                    <TextInput style={estilo.entrada} placeholder="cpf"/>
-                </View>
+                    <Form style={estilo.entrada}>
+                        <Item floatingLabel>
+                            <Label>Email</Label>
+                            <Input />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label>CPF</Label>
+                            <Input />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label>Nome do Estabelecimento</Label>
+                            <Input />
+                        </Item>
+                        <Item floatingLabel last>
+                            <Label>Senha</Label>
+                            <Input />
+                        </Item>
+                        <Item floatingLabel last>
+                            <Label>Confirmar Senha</Label>
+                            <Input />
+                        </Item>
+                    </Form>
 
-                <View>
-                    <Text>Nome do estabelecimento: </Text>
-                    <TextInput style={estilo.entrada} placeholder="nomeestabelecimento"/>
-                </View>
+                <Button style={estilo.botao}>
+                    <Text> CADASTRAR </Text>
+                </Button>
 
-                <View>
-                    <Text>Senha: </Text>
-                    <TextInput secureTextEntry={true} style={estilo.entrada} placeholder="senha"/>
-                </View>
+                </Content>
 
-                <View>
-                    <Text>Confirmar senha: </Text>
-                    <TextInput secureTextEntry={true} style={estilo.entrada} placeholder="confirmarsenha"/>
-                </View>
-
-                <View>
-                    <TouchableOpacity style={estilo.botao}>
-                        <Text> CADASTRAR </Text>
-                    </TouchableOpacity>
-                </View>
-
-            </View>
+            </Container>
 
         )
 
@@ -47,6 +51,10 @@ export default class cadastro extends Component{
 }
 
 const estilo = StyleSheet.create({
+    header:{
+        backgroundColor: '#f78f03'
+    },
+
     principal:{
         backgroundColor: 'white',
         flex: 1,
