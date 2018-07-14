@@ -27,7 +27,7 @@ export default class Login extends Component{
                         </Item>
                         <Item floatingLabel last>
                             <Label>Senha</Label>
-                            <Input />
+                            <Input secureTextEntry={true}/>
                         </Item>
                     </Form>
 

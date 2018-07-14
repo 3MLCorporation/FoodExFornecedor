@@ -16,9 +16,9 @@ export default class cadastro extends Component{
                     <Right />
                 </Header>
 
-                <Content style={estilo.principal}>
+                <Content padder contentContainerStyle={estilo.principal}>
 
-                    <Form style={estilo.entrada}>
+                    <Form>
                         <Item floatingLabel>
                             <Label>Email</Label>
                             <Input />
@@ -33,15 +33,15 @@ export default class cadastro extends Component{
                         </Item>
                         <Item floatingLabel last>
                             <Label>Senha</Label>
-                            <Input />
+                            <Input secureTextEntry={true}/>
                         </Item>
                         <Item floatingLabel last>
                             <Label>Confirmar Senha</Label>
-                            <Input />
+                            <Input secureTextEntry={true}/>
                         </Item>
                     </Form>
 
-                <Button style={estilo.botao}>
+                <Button full style={estilo.botao}>
                     <Text>CADASTRAR</Text>
                 </Button>
 
