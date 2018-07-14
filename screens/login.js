@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, Text, Button} from 'react-native';
+import { StyleSheet, Image} from 'react-native';
 import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 
 import firebase from 'react-native-firebase';
@@ -7,16 +7,20 @@ import firebase from 'react-native-firebase';
 export default class Login extends Component{
 	render() {
 		return (
-            <Container style={estilo.header}>
-                <Header>
-					<Left/> <Body> <Title>FoodEx+</Title> </Body> <Right />
+            <Container >
+                <Header style={estilo.header}>
+					<Left/>
+					<Body>
+						<Title>FoodEx+</Title>
+					</Body>
+					<Right />
                 </Header>
 
-                <Content style={estilo.principal}>
+                <Content padder contentContainerStyle={estilo.principal}>
 
 					<Image source={require('../assets/logofoodex.png')} style={estilo.logo}/>
 
-                    <Form style={estilo.entrada}>
+                    <Form >
                         <Item floatingLabel>
                             <Label>Email</Label>
                             <Input />
@@ -28,15 +32,15 @@ export default class Login extends Component{
                     </Form>
 
 					<Button transparent dark>
-						<Text> Esqueceu a sua senha? </Text>
+						<Text>Esqueceu a sua senha?</Text>
 					</Button>
 
-					<Button style={estilo.botao}>
-						<Text> LOGIN </Text>
+					<Button full style={estilo.botao}>
+						<Text>LOGIN</Text>
 					</Button>
 
 					<Button transparent dark>
-						<Text> Não tem uma conta? CADASTRE-SE </Text>
+						<Text>Não tem uma conta? CADASTRE-SE</Text>
 					</Button>
 
     			</Content>
@@ -50,17 +54,15 @@ export default class Login extends Component{
 const estilo = StyleSheet.create({
     header:{
         backgroundColor: '#f78f03'
+
     },
 
 	principal:{
-        backgroundColor: 'white',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        backgroundColor: 'white'
     },
 
     logo:{
-        width: 200,
+        width: 250,
         height: 200,
         margin: 20
     },
@@ -76,9 +78,7 @@ const estilo = StyleSheet.create({
 
 	botao:{
 		backgroundColor: '#f78f03',
-		paddingVertical: 10,
-		paddingHorizontal: 40,
-		marginTop: 20
-	},
+
+	}
 
 });

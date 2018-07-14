@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, Text, View, Button} from 'react-native';
+import { StyleSheet} from 'react-native';
 import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 
 import firebase from 'react-native-firebase';
@@ -9,7 +9,11 @@ export default class cadastro extends Component{
         return (
             <Container>
                 <Header style={estilo.header}>
-                    <Left/> <Body> <Title>FoodEx+</Title> </Body> <Right />
+                    <Left/>
+                    <Body>
+                        <Title>FoodEx+</Title>
+                    </Body>
+                    <Right />
                 </Header>
 
                 <Content style={estilo.principal}>
@@ -38,7 +42,7 @@ export default class cadastro extends Component{
                     </Form>
 
                 <Button style={estilo.botao}>
-                    <Text> CADASTRAR </Text>
+                    <Text>CADASTRAR</Text>
                 </Button>
 
                 </Content>
