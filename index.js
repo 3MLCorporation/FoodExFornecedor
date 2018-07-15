@@ -1,4 +1,6 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import App from './src/App';
+import bootstrap from './src';
 
-AppRegistry.registerComponent('HelloWorld', () => App);
+
+AppRegistry.registerComponent('HelloWorld', () => bootstrap());

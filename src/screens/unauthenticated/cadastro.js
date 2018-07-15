@@ -4,20 +4,24 @@ import { Container, Header, Left, Body, Right, Title, Content, Button, Text, For
 
 import firebase from 'react-native-firebase';
 
-export default class cadastro extends Component{
+export default class Cadastro extends Component{
+
+    static navigationOptions = {
+        header: (
+            <Header androidStatusBarColor={'#f78f03'}>
+                <Left/>
+                <Body>
+                <Title>FoodEx+</Title>
+                </Body>
+                <Right />
+            </Header>
+        )
+    };
+
 	render() {
         return (
             <Container>
-                <Header style={estilo.header}>
-                    <Left/>
-                    <Body>
-                        <Title>FoodEx+</Title>
-                    </Body>
-                    <Right />
-                </Header>
-
                 <Content padder contentContainerStyle={estilo.principal}>
-
                     <Form>
                         <Item floatingLabel>
                             <Label>Email</Label>
@@ -31,22 +35,19 @@ export default class cadastro extends Component{
                             <Label>Nome do Estabelecimento</Label>
                             <Input />
                         </Item>
-                        <Item floatingLabel last>
+                        <Item floatingLabel>
                             <Label>Senha</Label>
                             <Input secureTextEntry={true}/>
                         </Item>
-                        <Item floatingLabel last>
+                        <Item floatingLabel>
                             <Label>Confirmar Senha</Label>
                             <Input secureTextEntry={true}/>
                         </Item>
                     </Form>
-
                 <Button full style={estilo.botao}>
                     <Text>CADASTRAR</Text>
                 </Button>
-
                 </Content>
-
             </Container>
 
         )
@@ -60,10 +61,7 @@ const estilo = StyleSheet.create({
     },
 
     principal:{
-        backgroundColor: 'white',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        backgroundColor: 'white'
     },
 
     entrada:{
