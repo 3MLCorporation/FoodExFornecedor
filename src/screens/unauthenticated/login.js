@@ -8,7 +8,7 @@ export default class Login extends Component{
 
     static navigationOptions = {
        header: (
-           <Header androidStatusBarColor={'#f78f03'}>
+           <Header style={ {'backgroundColor' : '#f78f03'}} androidStatusBarColor={'#BF6B03'}>
                <Left/>
                <Body>
                <Title>FoodEx+</Title>
@@ -38,7 +38,7 @@ export default class Login extends Component{
         // extract the values from state
         const { email, password } = this.state;
 
-        firebase.auth().signInAndRetrieveDataWithEmailAndPassword(email, password)
+        firebase.auth().signInAndRetrieveDataWithEmailAndPassword(email.trim(), password)
             .catch((error) => {
                 console.error(error);
             });

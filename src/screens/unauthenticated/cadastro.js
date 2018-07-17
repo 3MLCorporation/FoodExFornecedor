@@ -8,7 +8,7 @@ export default class Cadastro extends Component{
 
     static navigationOptions = {
         header: (
-            <Header androidStatusBarColor={'#f78f03'}>
+            <Header style={ {'backgroundColor' : '#f78f03'}} androidStatusBarColor={'#BF6B03'}>
                 <Left/>
                 <Body>
                 <Title>FoodEx+</Title>
@@ -18,6 +18,49 @@ export default class Cadastro extends Component{
         )
     };
 
+    constructor() {
+        super();
+        this.ref = firebase.firestore().collection('fornecedores');
+        this.state = {
+            email: '',
+            cpf: '',
+            name: '',
+            password: '',
+        };
+    }
+
+    _updateEmail = email => {
+        this.setState({ email });
+    };
+
+    _updateCpf = cpf => {
+        this.setState({ cpf });
+    };
+
+    _updateName = name => {
+        this.setState({ name });
+    };
+
+    _updatePassword = password => {
+        this.setState({ password });
+    };
+
+    _registerUser = () => {
+        const { email, cpf, name, password } = this.state;
+
+        this.ref.doc(email.trim()).set({
+            nome: name,
+            cpf: cpf,
+        }).catch((error) => {
+            console.error(error);
+        });
+
+        firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email.trim(), password)
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
 	render() {
         return (
             <Container>
@@ -25,26 +68,30 @@ export default class Cadastro extends Component{
                     <Form>
                         <Item floatingLabel>
                             <Label>Email</Label>
-                            <Input />
+                            <Input onChangeText={this._updateEmail}
+                                   value={this.state.email}/>
                         </Item>
                         <Item floatingLabel>
                             <Label>CPF</Label>
-                            <Input />
+                            <Input onChangeText={this._updateCpf}
+                                   value={this.state.cpf}/>
                         </Item>
                         <Item floatingLabel>
-                            <Label>Nome do Estabelecimento</Label>
-                            <Input />
+                            <Label>Nome do estabelecimento</Label>
+                            <Input onChangeText={this._updateName}
+                                   value={this.state.name}/>
                         </Item>
                         <Item floatingLabel>
                             <Label>Senha</Label>
-                            <Input secureTextEntry={true}/>
+                            <Input secureTextEntry={true} onChangeText={this._updatePassword}
+                                   value={this.state.password}/>
                         </Item>
                         <Item floatingLabel>
-                            <Label>Confirmar Senha</Label>
+                            <Label>Confirmar senha</Label>
                             <Input secureTextEntry={true}/>
                         </Item>
                     </Form>
-                <Button full style={estilo.botao}>
+                <Button onPress={this._registerUser} full style={estilo.botao}>
                     <Text>CADASTRAR</Text>
                 </Button>
                 </Content>
