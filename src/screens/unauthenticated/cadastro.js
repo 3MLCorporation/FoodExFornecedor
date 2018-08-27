@@ -24,7 +24,6 @@ export default class Cadastro extends Component{
         this.state = {
             email: '',
             cpf: '',
-            name: '',
             password: '',
         };
     }
@@ -37,19 +36,14 @@ export default class Cadastro extends Component{
         this.setState({ cpf });
     };
 
-    _updateName = name => {
-        this.setState({ name });
-    };
-
     _updatePassword = password => {
         this.setState({ password });
     };
 
     _registerUser = () => {
-        const { email, cpf, name, password } = this.state;
+        const { email, cpf, password } = this.state;
 
         this.ref.doc(email.trim()).set({
-            nome: name,
             cpf: cpf,
         }).catch((error) => {
             console.error(error);
@@ -72,14 +66,9 @@ export default class Cadastro extends Component{
                                    value={this.state.email}/>
                         </Item>
                         <Item floatingLabel>
-                            <Label>CPF</Label>
+                            <Label>CPF / CNPJ</Label>
                             <Input onChangeText={this._updateCpf}
                                    value={this.state.cpf}/>
-                        </Item>
-                        <Item floatingLabel>
-                            <Label>Nome do estabelecimento</Label>
-                            <Input onChangeText={this._updateName}
-                                   value={this.state.name}/>
                         </Item>
                         <Item floatingLabel>
                             <Label>Senha</Label>
@@ -91,7 +80,7 @@ export default class Cadastro extends Component{
                             <Input secureTextEntry={true}/>
                         </Item>
                     </Form>
-                <Button onPress={this._registerUser} full style={estilo.botao}>
+                <Button onPress={this._registerUser} onclick="window.location.href='/confirmacaoEmail';" full style={estilo.botao}>
                     <Text>CADASTRAR</Text>
                 </Button>
                 </Content>
