@@ -28,6 +28,23 @@ export default class Cadastro extends Component{
         };
     }
 
+    componentWillMount(){
+        navigator.geolocation.getCurrentPosition(
+            ({coords}) => {
+                const {latitude, longitude} = coords;
+
+                this.setState({
+                    position: {
+                        latitude,
+                        longitude,
+                    },
+                })
+            },
+            (error) => alert(JSON.stringify(error)),
+            {enableHighAccuracy: true, timeout: 50000}
+        )
+    }
+
     _updateEmail = email => {
         this.setState({ email });
     };
@@ -41,10 +58,11 @@ export default class Cadastro extends Component{
     };
 
     _registerUser = () => {
-        const { email, cpf, password } = this.state;
+        const { email, cpf, password, position } = this.state;
 
         this.ref.doc(email.trim()).set({
             cpf: cpf,
+            coords: position,
         }).catch((error) => {
             console.error(error);
         });
