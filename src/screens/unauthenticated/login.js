@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image} from 'react-native';
 import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
+import {estilo_global} from "../../css/style_global";
 
 import firebase from 'react-native-firebase';
 
@@ -83,34 +84,4 @@ export default class Login extends Component{
 	}
 }
 
-const estilo = StyleSheet.create({
-    header:{
-        backgroundColor: '#f78f03'
-
-    },
-
-	principal:{
-        backgroundColor: 'white'
-    },
-
-    logo:{
-        width: 250,
-        height: 200,
-        margin: 20
-    },
-
-    entrada:{
-		width: 300,
-		height: 40,
-		borderColor: 'gray',
-		backgroundColor: 'white',
-		borderWidth: 1,
-		marginTop: 10
-	},
-
-	botao:{
-		backgroundColor: '#f78f03',
-
-	}
-
-});
+const estilo = StyleSheet.create(Object.assign({}, estilo_global, {}));
