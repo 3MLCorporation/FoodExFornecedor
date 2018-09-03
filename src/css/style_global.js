@@ -1,6 +1,8 @@
 export const estilo_global = {
     header:{
-        backgroundColor: '#f78f03'
+        backgroundColor: '#f78f03',
+        androidStatusBarColor: '#BF6B03'
+
     },
 
     principal:{

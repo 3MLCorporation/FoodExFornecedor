@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet} from 'react-native';
-import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
+import { Container, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
+import { NavigationOptions } from "../../global_components/NavigationOptions";
 import {estilo_global} from "../../css/style_global";
 
 import firebase from 'react-native-firebase';
 
 export default class Cadastro extends Component{
-
-    static navigationOptions = {
-        header: (
-            <Header style={ {'backgroundColor' : '#f78f03'}} androidStatusBarColor={'#BF6B03'}>
-                <Left/>
-                <Body>
-                <Title>FoodEx+</Title>
-                </Body>
-                <Right />
-            </Header>
-        )
-    };
 
     constructor() {
         super();
@@ -77,6 +66,7 @@ export default class Cadastro extends Component{
 	render() {
         return (
             <Container>
+                <NavigationOptions titulo={"Foodex"}/>
                 <Content padder contentContainerStyle={estilo.principal}>
                     <Form>
                         <Item floatingLabel>
