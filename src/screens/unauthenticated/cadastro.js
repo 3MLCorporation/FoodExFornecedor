@@ -63,6 +63,18 @@ export default class Cadastro extends Component{
             });
     };
 
+    _confirmaSenha = () => {
+        confirmacao = $('#confirmarSenha').getValue();
+        if (this.state.password === confirmacao) {
+            confirmacao.setValue('')
+            this._updatePassword('');
+            Alert.alert('Senhas Não Batem, tente novamente')
+        }
+        else {
+            this._registerUser()
+        }
+    }
+
 	render() {
         return (
             <Container>
@@ -86,10 +98,10 @@ export default class Cadastro extends Component{
                         </Item>
                         <Item floatingLabel>
                             <Label>Confirmar senha</Label>
-                            <Input secureTextEntry={true}/>
+                            <Input id="confirmarSenha" secureTextEntry={true}/>
                         </Item>
                     </Form>
-                <Button onPress={this._registerUser} onclick="window.location.href='/confirmacaoEmail';" full style={estilo.botao}>
+                <Button onPress={this._confirmaSenha()} onClick="window.location.href='/confirmacaoEmail';" full style={estilo.botao}>
                     <Text>CADASTRAR</Text>
                 </Button>
                 </Content>
