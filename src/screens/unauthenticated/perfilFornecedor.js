@@ -43,6 +43,7 @@ export default class Cadastro extends Component{
                                    value={this.state.desc}/>
                         </Item>
                     </Form>
+                    <br/>
                     <Button onclick="window.location.href='/confirmacaoEmail';" full style={estilo.botao}>
                         <Text>ANTERIOR</Text>
                     </Button>
@@ -58,4 +59,3 @@ export default class Cadastro extends Component{
 }
 
 const estilo = StyleSheet.create(Object.assign({}, estilo_global, {}));
-const
