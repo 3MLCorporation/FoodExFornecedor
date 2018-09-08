@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet} from 'react-native';
-import { Header, Left, Body, Right, Title } from 'native-base';
+import { Header, Left, Body, Right, Title} from 'native-base';
 import {estilo_global} from "../css/style_global";
 
 
@@ -13,13 +13,13 @@ export class NavigationOptions extends Component {
 
     render () {
         return (
-            <Header style={estilo.header}>
-                <Left/>
-                <Body>
-                <Title>{this.props.titulo}</Title>
-                </Body>
-                <Right />
-            </Header>
+                <Header style={estilo.header}  androidStatusBarColor='#BF6B03'>
+                    <Left/>
+                    <Body>
+                    <Title>{this.props.titulo}</Title>
+                    </Body>
+                    <Right />
+                </Header>
         )
     }
 
