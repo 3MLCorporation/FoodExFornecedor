@@ -9,7 +9,7 @@ export default class Cadastro extends Component{
     render() {
         return (
             <Container>
-                <NavigationOptions titulo={"Foodex"}/>
+                <NavigationOptions titulo="Foodex"/>
                 <Header>
                     <Left>
                         <Button transparent>

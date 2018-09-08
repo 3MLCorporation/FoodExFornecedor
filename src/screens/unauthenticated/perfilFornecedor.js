@@ -28,7 +28,7 @@ export default class Cadastro extends Component{
     render() {
         return (
             <Container>
-                <NavigationOptions titulo={"Foodex"}/>
+                <NavigationOptions titulo="Foodex"/>
                 <Content padder contentContainerStyle={estilo.principal}>
                     <Image source={require('../../../assets/imageupload.jpg')} style={estilo.logo}/>
                     <Form>

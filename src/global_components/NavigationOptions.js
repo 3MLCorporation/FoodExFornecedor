@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet} from 'react-native';
 import { Header, Left, Body, Right, Title } from 'native-base';
-import {estilo_global} from "../../css/style_global";
+import {estilo_global} from "../css/style_global";
 
 
-export class NavigationOptions extends component {
+export class NavigationOptions extends Component {
     constructor(props) {
         super(props);
+        //this.
 
     }
 
@@ -15,7 +16,7 @@ export class NavigationOptions extends component {
             <Header style={estilo.header}>
                 <Left/>
                 <Body>
-                <Title>props.titulo</Title>
+                <Title>{this.props.titulo}</Title>
                 </Body>
                 <Right />
             </Header>

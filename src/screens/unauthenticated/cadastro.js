@@ -4,6 +4,7 @@ import { Container, Content, Button, Text, Form, Item, Input, Label } from 'nati
 import { NavigationOptions } from "../../global_components/NavigationOptions";
 import {estilo_global} from "../../css/style_global";
 
+
 import firebase from 'react-native-firebase';
 
 export default class Cadastro extends Component{
@@ -15,6 +16,7 @@ export default class Cadastro extends Component{
             email: '',
             cpf: '',
             password: '',
+            confPassword: '',
         };
     }
 
@@ -46,6 +48,9 @@ export default class Cadastro extends Component{
     _updatePassword = password => {
         this.setState({ password });
     };
+    _updateConfPassword = confPassword => {
+        this.setState({ confPassword });
+    };
 
     _registerUser = () => {
         const { email, cpf, password, position } = this.state;
@@ -64,21 +69,20 @@ export default class Cadastro extends Component{
     };
 
     _confirmaSenha = () => {
-        confirmacao = $('#confirmarSenha').getValue();
-        if (this.state.password === confirmacao) {
-            confirmacao.setValue('')
+        if (this.state.password === this.state.confpassword) {
+            confirmacao.setValue('');
             this._updatePassword('');
-            Alert.alert('Senhas Não Batem, tente novamente')
+            Alert.alert('Senhas não batem, tente novamente')
         }
         else {
             this._registerUser()
         }
-    }
+    };
 
 	render() {
         return (
             <Container>
-                <NavigationOptions titulo={"Foodex"}/>
+                <NavigationOptions titulo="Foodex"/>
                 <Content padder contentContainerStyle={estilo.principal}>
                     <Form>
                         <Item floatingLabel>
@@ -98,7 +102,7 @@ export default class Cadastro extends Component{
                         </Item>
                         <Item floatingLabel>
                             <Label>Confirmar senha</Label>
-                            <Input id="confirmarSenha" secureTextEntry={true}/>
+                            <Input secureTextEntry={true} onChangeText={this._updateConfPassword} value={this.state.confPassword}/>
                         </Item>
                     </Form>
                 <Button onPress={this._confirmaSenha()} onClick="window.location.href='/confirmacaoEmail';" full style={estilo.botao}>

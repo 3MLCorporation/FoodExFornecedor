@@ -40,7 +40,7 @@ export default class Login extends Component{
 	render() {
 		return (
             <Container >
-                <NavigationOptions titulo={"Foodex"}/>
+                <NavigationOptions titulo="Foodex"/>
                 <Content padder contentContainerStyle={estilo.principal}>
 					<Image source={require('../../../assets/logofoodex.png')} style={estilo.logo}/>
                     <Form >
@@ -74,3 +74,4 @@ export default class Login extends Component{
 }
 
 const estilo = StyleSheet.create(Object.assign({}, estilo_global, {}));
+const a = estilo_global;

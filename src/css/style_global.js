@@ -1,7 +1,7 @@
 export const estilo_global = {
     header:{
         backgroundColor: '#f78f03',
-        androidStatusBarColor: '#BF6B03'
+        //androidStatusBarColor: '#BF6B03'
 
     },
 
@@ -17,11 +17,18 @@ export const estilo_global = {
         borderWidth: 1,
         marginTop: 10
     },
+    logo:{
+        width: 300,
+        height: 250,
+        marginLeft: 30,
 
+        marginTop: 30
+    },
     botao:{
         backgroundColor: '#f78f03',
         paddingVertical: 10,
         paddingHorizontal: 40,
         marginTop: 20
-    }
+    },
+
 };
