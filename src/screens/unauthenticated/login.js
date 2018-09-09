@@ -40,7 +40,6 @@ export default class Login extends Component{
 	render() {
 		return (
             <Container >
-                {<NavigationOptions titulo="Foodex"/>}
                 <Content padder contentContainerStyle={estilo.principal}>
 					<Image source={require('../../../assets/logofoodex.png')} style={estilo.logo}/>
                     <Form >

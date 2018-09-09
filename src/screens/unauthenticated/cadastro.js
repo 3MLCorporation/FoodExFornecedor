@@ -82,7 +82,6 @@ export default class Cadastro extends Component{
 	render() {
         return (
             <Container>
-                <NavigationOptions titulo="Foodex"/>
                 <Content padder contentContainerStyle={estilo.principal}>
                     <Form>
                         <Item floatingLabel>
