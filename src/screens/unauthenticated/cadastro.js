@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet} from 'react-native';
 import { Container, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
-import { NavigationOptions } from "../../global_components/NavigationOptions";
 import {estilo_global} from "../../css/style_global";
 
 
@@ -18,6 +17,7 @@ export default class Cadastro extends Component{
             password: '',
             confPassword: '',
         };
+
     }
 
     componentWillMount(){
@@ -53,6 +53,7 @@ export default class Cadastro extends Component{
     };
 
     _registerUser = () => {
+
         const { email, cpf, password, position } = this.state;
 
         this.ref.doc(email.trim()).set({
@@ -68,14 +69,14 @@ export default class Cadastro extends Component{
             });
     };
 
-    _confirmaSenha = () => {
-        if (this.state.password === this.state.confpassword) {
-            confirmacao.setValue('');
-            this._updatePassword('');
-            Alert.alert('Senhas não batem, tente novamente')
+    _confirmarSenha = () => {
+        if (this.state.password === this.state.confPassword) {
+            this._registerUser();
         }
         else {
-            this._registerUser()
+           // confirmacao.setValue('');
+            this._updatePassword('');
+            alert('Senhas não batem, tente novamente');
         }
     };
 
@@ -101,12 +102,13 @@ export default class Cadastro extends Component{
                         </Item>
                         <Item floatingLabel>
                             <Label>Confirmar senha</Label>
-                            <Input secureTextEntry={true} onChangeText={this._updateConfPassword} value={this.state.confPassword}/>
+                            <Input secureTextEntry={true} onChangeText={this._updateConfPassword}
+                                   value={this.state.confPassword}/>
                         </Item>
                     </Form>
-                <Button onPress={this._confirmaSenha()} onClick="window.location.href='/confirmacaoEmail';" full style={estilo.botao}>
-                    <Text>CADASTRAR</Text>
-                </Button>
+                    <Button onPress={this._confirmarSenha} full style={estilo.botao}>
+                        <Text>CADASTRAR</Text>
+                    </Button>
                 </Content>
             </Container>
 

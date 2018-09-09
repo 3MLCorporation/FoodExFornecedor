@@ -1,8 +1,8 @@
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 
 import Principal from './Principal';
 
-export default StackNavigator({
+export default createStackNavigator({
     Principal: {
         screen: Principal,
     },

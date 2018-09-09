@@ -1,11 +1,11 @@
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import {NavigationOptions} from "../../global_components/NavigationOptions";
 
 import Login from './login';
 import Cadastro from './cadastro';
 import React from "react";
 
-export default StackNavigator({
+export default createStackNavigator({
     Login: {
         screen: Login,
         navigationOptions: () => ({
