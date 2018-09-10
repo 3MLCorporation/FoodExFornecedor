@@ -3,6 +3,7 @@ import {NavigationOptions} from "../../global_components/NavigationOptions";
 
 import Login from './login';
 import Cadastro from './cadastro';
+import CadastrarLocal from './cadastrarLocal';
 import React from "react";
 
 export default createStackNavigator({
@@ -14,6 +15,12 @@ export default createStackNavigator({
     },
     Cadastro: {
         screen: Cadastro,
+        navigationOptions: () => ({
+            header: <NavigationOptions/>
+        }),
+    },
+    CadastrarLocal: {
+        screen: CadastrarLocal,
         navigationOptions: () => ({
             header: <NavigationOptions/>
         }),

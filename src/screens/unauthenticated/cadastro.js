@@ -20,23 +20,6 @@ export default class Cadastro extends Component{
 
     }
 
-    componentWillMount(){
-        navigator.geolocation.getCurrentPosition(
-            ({coords}) => {
-                const {latitude, longitude} = coords;
-
-                this.setState({
-                    position: {
-                        latitude,
-                        longitude,
-                    },
-                })
-            },
-            (error) => alert(JSON.stringify(error)),
-            {enableHighAccuracy: true, timeout: 50000}
-        )
-    }
-
     _updateEmail = email => {
         this.setState({ email });
     };
@@ -71,7 +54,17 @@ export default class Cadastro extends Component{
 
     _confirmarSenha = () => {
         if (this.state.password === this.state.confPassword) {
-            this._registerUser();
+            const { email, cpf, password} = this.state;
+            let user = {
+                email: email.trim(),
+                cpf: cpf.trim(),
+                password: password,
+            };
+
+           // const { navigation } = this.props.navigation.state.params.data;
+           // this.props.navigation.navigate('Login');
+            this.props.navigation.navigate('CadastrarLocal', { user: user});
+          //  this._registerUser();
         }
         else {
            // confirmacao.setValue('');
