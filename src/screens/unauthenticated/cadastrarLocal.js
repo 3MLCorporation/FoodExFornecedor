@@ -52,21 +52,26 @@ export default class CadastrarLocal extends Component{
         );*/
         user.position = this.state.position;
         console.log(user);
-        this.props.navigation.navigate('CadastrarLocal', { user: user});
+        this._registerUser(user);
     };
 
-    _registerUser = () => {
+    _registerUser = (user) => {
 
-        const { email, cpf, password, position } = this.state;
+        const { email, cpf, password, name, desc, position } = user;
+        console.log('_registerUser -> ' + JSON.stringify(user));
 
-        this.ref.doc(email.trim()).set({
-            cpf: cpf,
-            coords: position,
-        }).catch((error) => {
-            console.error(error);
-        });
 
         firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email.trim(), password)
+            .then((userCredential) => {
+                this.ref.doc(userCredential.user.uid).set({
+                    cpf: cpf,
+                    name: name,
+                    description: desc,
+                    coords: position,
+                }).catch((error) => {
+                    console.error(error);
+                });
+            })
             .catch((error) => {
                 console.error(error);
             });

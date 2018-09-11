@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet, Image} from 'react-native';
 import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 import {estilo_global} from "../../css/style_global";
-import {NavigationOptions} from "../../global_components/NavigationOptions";
-
-import firebase from 'react-native-firebase';
 
 export default class CadastrarPerfil extends Component{
 
     constructor() {
-        super(props);
-        this.ref = firebase.firestore().collection('fornecedores');
+        super();
         this.state = {
             name: '',
             desc: '',
         };
-        if(this.props.navigation.state.params) {
-            this.user = this.props.navigation.state.params.user;
-        }
     }
 
     _updateName = name => {
@@ -31,12 +24,15 @@ export default class CadastrarPerfil extends Component{
     _anterior = () => {
         this._updateName('');
         this._updateDesc('');
-        this.props.navigation.navigate('Cadastro', { user: this.user});
+        const {user} = this.props.navigation.state.params;
+        this.props.navigation.navigate('Cadastro', { user: user});
     };
     _proximo = () => {
-        this.user.name = this.state.name;
-        this.user.desc = this.state.desc;
-        this.props.navigation.navigate('CadastrarLocal', { user: this.user});
+        const {user} = this.props.navigation.state.params;
+        user.name = this.state.name;
+        user.desc = this.state.desc;
+        console.log('User - cadastraPerfil  ' + user);
+        this.props.navigation.navigate('CadastrarLocal', { user: user});
     };
     render() {
         return (

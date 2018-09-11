@@ -25,9 +25,9 @@ class Principal extends Component{
     }
 
     componentWillMount(){
-        const email = firebase.auth().currentUser.email;
-        console.log('Email do usuario logado: ', email);
-        const f = firebase.firestore().collection('fornecedores').doc(email).get()
+        const user = firebase.auth().currentUser;
+        console.log('Email do usuario logado: ', user.email);
+        firebase.firestore().collection('fornecedores').doc(user.uid).get()
             .then(doc => {
                 if (!doc.exists) {
                     console.log('No such document!');
@@ -54,8 +54,9 @@ class Principal extends Component{
         return(
             <Container>
                 <Content padder>
-                    <Text> Hello, {this.state.fornecedor.nome}  </Text>
+                    <Text> Hello, {this.state.fornecedor.name}  </Text>
                     <Text> CPF: {this.state.fornecedor.cpf} </Text>
+                    <Text> Descrição: {this.state.fornecedor.description}  </Text>
                     <Button onPress={this._logout}>
                         <Text>
                             Logout

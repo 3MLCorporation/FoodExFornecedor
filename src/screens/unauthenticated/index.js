@@ -3,9 +3,9 @@ import {NavigationOptions} from "../../global_components/NavigationOptions";
 
 import Login from './login';
 import Cadastro from './cadastro';
+import CadastrarPerfil from "./cadastrarPerfil";
 import CadastrarLocal from './cadastrarLocal';
 import React from "react";
-import CadastrarPerfil from "./cadastrarPerfil";
 
 export default createStackNavigator({
     Login: {
@@ -29,7 +29,7 @@ export default createStackNavigator({
     CadastrarLocal: {
         screen: CadastrarLocal,
         navigationOptions: () => ({
-            header: <NavigationOptions "Cadastro"/>
+            header: <NavigationOptions titulo="Cadastro"/>
         }),
     },
 });

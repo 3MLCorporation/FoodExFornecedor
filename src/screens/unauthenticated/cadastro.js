@@ -35,23 +35,6 @@ export default class Cadastro extends Component{
         this.setState({ confPassword });
     };
 
-    _registerUser = () => {
-
-        const { email, cpf, password, position } = this.state;
-
-        this.ref.doc(email.trim()).set({
-            cpf: cpf,
-            coords: position,
-        }).catch((error) => {
-            console.error(error);
-        });
-
-        firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email.trim(), password)
-            .catch((error) => {
-                console.error(error);
-            });
-    };
-
     _confirmarSenha = () => {
         if (this.state.password === this.state.confPassword) {
             const { email, cpf, password} = this.state;
@@ -63,12 +46,13 @@ export default class Cadastro extends Component{
 
            // const { navigation } = this.props.navigation.state.params.data;
            // this.props.navigation.navigate('Login');
-            this.props.navigation.navigate('CadastrarLocal', { user: user});
+            this.props.navigation.navigate('CadastrarPerfil', { user: user});
           //  this._registerUser();
         }
         else {
            // confirmacao.setValue('');
             this._updatePassword('');
+            this._updateConfPassword('');
             alert('Senhas não batem, tente novamente');
         }
     };
