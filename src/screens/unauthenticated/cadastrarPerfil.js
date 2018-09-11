@@ -6,7 +6,7 @@ import {NavigationOptions} from "../../global_components/NavigationOptions";
 
 import firebase from 'react-native-firebase';
 
-export default class Cadastro extends Component{
+export default class CadastrarPerfil extends Component{
 
     constructor() {
         super(props);
@@ -15,6 +15,9 @@ export default class Cadastro extends Component{
             name: '',
             desc: '',
         };
+        if(this.props.navigation.state.params) {
+            this.user = this.props.navigation.state.params.user;
+        }
     }
 
     _updateName = name => {
@@ -25,10 +28,19 @@ export default class Cadastro extends Component{
         this.setState({ desc });
     };
 
+    _anterior = () => {
+        this._updateName('');
+        this._updateDesc('');
+        this.props.navigation.navigate('Cadastro', { user: this.user});
+    };
+    _proximo = () => {
+        this.user.name = this.state.name;
+        this.user.desc = this.state.desc;
+        this.props.navigation.navigate('CadastrarLocal', { user: this.user});
+    };
     render() {
         return (
             <Container>
-                <NavigationOptions titulo="Foodex"/>
                 <Content padder contentContainerStyle={estilo.principal}>
                     <Image source={require('../../../assets/imageupload.jpg')} style={estilo.logo}/>
                     <Form>
@@ -43,11 +55,10 @@ export default class Cadastro extends Component{
                                    value={this.state.desc}/>
                         </Item>
                     </Form>
-                    <br/>
-                    <Button onclick="window.location.href='/confirmacaoEmail';" full style={estilo.botao}>
+                    <Button onPress={this._anterior} full style={estilo.botao}>
                         <Text>ANTERIOR</Text>
                     </Button>
-                    <Button onclick="window.location.href='/formaPagamento';" full style={estilo.botao}>
+                    <Button onPress={this._proximo} full style={estilo.botao}>
                         <Text>PRÓXIMO</Text>
                     </Button>
                 </Content>
