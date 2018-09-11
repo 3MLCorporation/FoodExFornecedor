@@ -29,15 +29,15 @@ export default class CadastrarPerfil extends Component{
     };
 
     _anterior = () => {
-        this._updateName('')
-        this._updateDesc('')
+        this._updateName('');
+        this._updateDesc('');
         this.props.navigation.navigate('Cadastro', { user: this.user});
-    }
+    };
     _proximo = () => {
         this.user.name = this.state.name;
         this.user.desc = this.state.desc;
         this.props.navigation.navigate('CadastrarLocal', { user: this.user});
-    }
+    };
     render() {
         return (
             <Container>
