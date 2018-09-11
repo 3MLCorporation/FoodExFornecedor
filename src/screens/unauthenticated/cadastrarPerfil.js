@@ -55,7 +55,6 @@ export default class CadastrarPerfil extends Component{
                                    value={this.state.desc}/>
                         </Item>
                     </Form>
-                    <br/>
                     <Button onPress={this._anterior} full style={estilo.botao}>
                         <Text>ANTERIOR</Text>
                     </Button>
