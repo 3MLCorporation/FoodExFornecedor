@@ -28,7 +28,16 @@ export const estilo_global = {
         backgroundColor: '#f78f03',
         paddingVertical: 10,
         paddingHorizontal: 40,
-        marginTop: 20
+        marginTop: 20,
+    },
+    botao_mapa:{
+        backgroundColor: '#f78f03',
+        paddingVertical: 10,
+        paddingHorizontal: 40,
+        marginTop: 20,
+        position: 'absolute',
+        bottom: 10,
+        width: '100%',
     },
 
 };
