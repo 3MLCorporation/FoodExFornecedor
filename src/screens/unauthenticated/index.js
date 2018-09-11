@@ -5,24 +5,31 @@ import Login from './login';
 import Cadastro from './cadastro';
 import CadastrarLocal from './cadastrarLocal';
 import React from "react";
+import CadastrarPerfil from "./cadastrarPerfil";
 
 export default createStackNavigator({
     Login: {
         screen: Login,
         navigationOptions: () => ({
-            header: <NavigationOptions/>
+            header: <NavigationOptions titulo="FoodEx+"/>
         }),
     },
     Cadastro: {
         screen: Cadastro,
         navigationOptions: () => ({
-            header: <NavigationOptions/>
+            header: <NavigationOptions titulo="Cadastro"/>
+        }),
+    },
+    CadastrarPerfil: {
+        screen: CadastrarPerfil,
+        navigationOptions: () => ({
+            header: <NavigationOptions titulo="Cadastro"/>
         }),
     },
     CadastrarLocal: {
         screen: CadastrarLocal,
         navigationOptions: () => ({
-            header: <NavigationOptions/>
+            header: <NavigationOptions "Cadastro"/>
         }),
     },
 });

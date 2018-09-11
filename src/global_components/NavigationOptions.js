@@ -16,7 +16,7 @@ export class NavigationOptions extends Component {
                 <Header style={estilo.header}  androidStatusBarColor='#BF6B03'>
                     <Left/>
                     <Body>
-                    <Title>FoodEx+</Title>
+                    <Title>{this.props.titulo}</Title>
                     </Body>
                     <Right />
                 </Header>
