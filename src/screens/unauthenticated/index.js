@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
-import {NavigationOptions} from "../../global_components/NavigationOptions";
+import {NavigationOptionsDeslog} from "../../global_components/NavigationOptionsDeslog";
 
 import Login from './login';
 import Cadastro from './cadastro';
@@ -11,25 +11,25 @@ export default createStackNavigator({
     Login: {
         screen: Login,
         navigationOptions: () => ({
-            header: <NavigationOptions titulo="FoodEx+"/>
+            header: <NavigationOptionsDeslog titulo="FoodEx+"/>
         }),
     },
     Cadastro: {
         screen: Cadastro,
         navigationOptions: () => ({
-            header: <NavigationOptions titulo="Cadastro"/>
+            header: <NavigationOptionsDeslog titulo="Cadastro"/>
         }),
     },
     CadastrarPerfil: {
         screen: CadastrarPerfil,
         navigationOptions: () => ({
-            header: <NavigationOptions titulo="Cadastro"/>
+            header: <NavigationOptionsDeslog titulo="Cadastro"/>
         }),
     },
     CadastrarLocal: {
         screen: CadastrarLocal,
         navigationOptions: () => ({
-            header: <NavigationOptions titulo="Cadastro"/>
+            header: <NavigationOptionsDeslog titulo="Cadastro"/>
         }),
     },
 });

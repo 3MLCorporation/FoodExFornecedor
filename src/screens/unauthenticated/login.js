@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Image} from 'react-native';
 import { Container, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 import {estilo_global} from "../../css/style_global";
-import { NavigationOptions } from "../../global_components/NavigationOptions";
 import firebase from 'react-native-firebase';
 
 export default class Login extends Component{

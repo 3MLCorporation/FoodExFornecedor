@@ -1,9 +1,14 @@
 import { createStackNavigator } from 'react-navigation';
+import {NavigationOptionsLog} from "../../global_components/NavigationOptionsLog";
+import React from "react";
 
-import Principal from './Principal';
+import Perfil from './Perfil';
 
 export default createStackNavigator({
-    Principal: {
-        screen: Principal,
+    Perfil: {
+        screen: Perfil,
+        navigationOptions: () => ({
+            header: <NavigationOptionsLog titulo="Perfil"/>
+        }),
     },
 });

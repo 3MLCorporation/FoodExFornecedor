@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import { StyleSheet} from 'react-native';
-import { Header, Left, Body, Right, Title} from 'native-base';
+import firebase from 'react-native-firebase';
+import { Header, Left, Body, Right, Title, Text, Icon, Button} from 'native-base';
 import {estilo_global} from "../css/style_global";
 
 
-export class NavigationOptions extends Component {
+export class NavigationOptionsLog extends Component {
     constructor(props) {
         super(props);
         //this.
 
     }
+
+    _logout = () => {
+        firebase.auth().signOut()
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
     render () {
         return (
@@ -18,7 +26,11 @@ export class NavigationOptions extends Component {
                     <Body>
                     <Title>{this.props.titulo}</Title>
                     </Body>
-                    <Right />
+                    <Right>
+                        <Button hasText transparent onPress={this._logout}>
+                            <Text>Logout</Text>
+                        </Button>
+                    </Right>
                 </Header>
         )
     }

@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
-
+import { StyleSheet, Image} from 'react-native';
 import firebase from 'react-native-firebase';
+import {estilo_global} from "../../css/style_global";
+import {estilo_perfil} from "../../css/perfil";
 
-class Principal extends Component{
+class Perfil extends Component{
 
-    static navigationOptions = {
-        header: (
-            <Header style={ {'backgroundColor' : '#f78f03'}} androidStatusBarColor={'#BF6B03'}>
-                <Left/>
-                <Body>
-                <Title>Principal</Title>
-                </Body>
-                <Right />
-            </Header>
-        )
-    };
+    // static navigationOptions = {
+    //     header: (
+    //         <Header style={ {'backgroundColor' : '#f78f03'}} androidStatusBarColor={'#BF6B03'}>
+    //             <Left/>
+    //             <Body>
+    //             <Title>Principal</Title>
+    //             </Body>
+    //             <Right />
+    //         </Header>
+    //     )
+    // };
 
     constructor() {
         super();
@@ -43,29 +45,21 @@ class Principal extends Component{
             });
     }
 
-    _logout = () => {
-        firebase.auth().signOut()
-            .catch((error) => {
-                console.error(error);
-            });
-    };
-
     render(){
         return(
             <Container>
                 <Content padder>
-                    <Text> Hello, {this.state.fornecedor.name}  </Text>
-                    <Text> CPF: {this.state.fornecedor.cpf} </Text>
-                    <Text> Descrição: {this.state.fornecedor.description}  </Text>
-                    <Button onPress={this._logout}>
-                        <Text>
-                            Logout
-                        </Text>
-                    </Button>
+                    <Image source={require('../../../assets/imageupload.jpg')} style={estilo.imagem}/>
+                    <Text style={estilo.titulo}>{this.state.fornecedor.name}  </Text>
+                    <Item style={estilo.caixaDescricao}>
+                        <Text style={estilo.descricao}> Descrição: {this.state.fornecedor.description}  </Text>
+                    </Item>
                 </Content>
             </Container>
         );
     }
 }
 
-export default Principal;
+export default Perfil;
+
+const estilo = StyleSheet.create(Object.assign({}, estilo_global, estilo_perfil, {}));

@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet} from 'react-native';
 import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 import {estilo_global} from "../../css/style_global";
-import {NavigationOptions} from "../../global_components/NavigationOptions";
+import {NavigationOptionsDeslog} from "../../global_components/NavigationOptionsDeslog";
 
 export default class Cadastro extends Component{
 
     render() {
         return (
             <Container>
-                <NavigationOptions titulo="Foodex"/>
+                <NavigationOptionsDeslog titulo="Foodex"/>
                 <Header>
                     <Left>
                         <Button transparent>

@@ -38,7 +38,7 @@ export default class CadastrarPerfil extends Component{
         return (
             <Container>
                 <Content padder contentContainerStyle={estilo.principal}>
-                    <Image source={require('../../../assets/imageupload.jpg')} style={estilo.logo}/>
+                    <Image source={require('../../../assets/imageupload.jpg')} style={estilo.imagem}/>
                     <Form>
                         <Item floatingLabel>
                             <Label>Nome do estabelecimento</Label>
@@ -48,7 +48,7 @@ export default class CadastrarPerfil extends Component{
                         <Item floatingLabel>
                             <Label>Descrição</Label>
                             <Input onChangeText={this._updateDesc}
-                                   value={this.state.desc}/>
+                                   value={this.state.desc} multiline={true}/>
                         </Item>
                     </Form>
                     <Button onPress={this._anterior} full style={estilo.botao}>
