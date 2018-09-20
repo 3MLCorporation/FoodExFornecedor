@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet} from 'react-native';
+import StepIndicator from 'react-native-step-indicator';
 import { Container, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 import {estilo_global} from "../../css/style_global";
 

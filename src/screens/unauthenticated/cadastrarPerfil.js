@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Image, View} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
+import StepIndicator from 'react-native-step-indicator';
 import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 import {estilo_global} from "../../css/style_global";
 
