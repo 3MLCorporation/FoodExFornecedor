@@ -5,6 +5,8 @@ import firebase from 'react-native-firebase';
 import {estilo_global} from "../../css/style_global";
 import {estilo_perfil} from "../../css/perfil";
 
+import Cardapio from './cardapio';
+
 class Perfil extends Component{
 
     // static navigationOptions = {
@@ -45,6 +47,10 @@ class Perfil extends Component{
             });
     }
 
+    _cardapio = () => {
+        this.props.navigation.navigate('Cardapio', { user: user});
+    };
+
     render(){
         return(
             <Container>
@@ -54,6 +60,9 @@ class Perfil extends Component{
                     <Item style={estilo.caixaDescricao}>
                         <Text style={estilo.descricao}> Descrição: {this.state.fornecedor.description}  </Text>
                     </Item>
+                    <Button onPress={this._cardapio} full style={estilo.botao}>
+                        <Text>Cardápio</Text>
+                    </Button>
                 </Content>
             </Container>
         );
