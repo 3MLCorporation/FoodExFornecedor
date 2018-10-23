@@ -48,7 +48,7 @@ class Perfil extends Component{
     }
 
     _cardapio = () => {
-        this.props.navigation.navigate('Cardapio', { user: user});
+        this.props.navigation.navigate('Cardapio', { user: firebase.auth().currentUser});
     };
 
     render(){

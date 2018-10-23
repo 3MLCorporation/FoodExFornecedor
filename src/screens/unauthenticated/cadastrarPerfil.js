@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, View} from 'react-native';
-import ImagePicker from 'react-native-image-picker';
-import RNFetchBlob from 'react-native-fetch-blob';
-import StepIndicator from 'react-native-step-indicator';
+/*import ImagePicker from 'react-native-image-picker';
+import RNFetchBlob from 'react-native-fetch-blob';*/
 import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
 import {estilo_global} from "../../css/style_global";
 
-//UP IMAGES -> https://medium.com/@davidjsehl/react-native-and-the-infamous-blob-uploading-images-to-firebase-b1a440f9e078
+/*//UP IMAGES -> https://medium.com/@davidjsehl/react-native-and-the-infamous-blob-uploading-images-to-firebase-b1a440f9e078
 const Blob = RNFetchBlob.polyfill.Blob;
 const fs = RNFetchBlob.fs;
 window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
-window.Blob = Blob;
+window.Blob = Blob;*/
 
-const uploadImage = (uri, imageName, mime = 'image/jpg') => {
+/*const uploadImage = (uri, imageName, mime = 'image/jpg') => {
     return new Promise((resolve, reject) => {
         const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
         let uploadBlob = null;
@@ -36,7 +35,7 @@ const uploadImage = (uri, imageName, mime = 'image/jpg') => {
                 reject(error)
             })
     })
-};
+};*/
 
 export default class CadastrarPerfil extends Component{
 
@@ -46,9 +45,9 @@ export default class CadastrarPerfil extends Component{
             name: '',
             desc: '',
 
-            imagePath: null,
+            /*imagePath: null,
             imageHeight: null,
-            imageWidth: null,
+            imageWidth: null,*/
         };
     }
 
@@ -77,7 +76,7 @@ export default class CadastrarPerfil extends Component{
 
 
 
-    _takePicture = () => {
+   /* _takePicture = () => {
         const cam_options = {
             mediaType: 'photo',
             maxWidth: 600,
@@ -98,10 +97,10 @@ export default class CadastrarPerfil extends Component{
                 })
             }
         })
-    };
+    };*/
     render() {
 
-        const photo = this.state.imagePath ?     //se houver imagem, ela é renderizada, se não, se renderiza 'imageupload.jpg'
+       /* const photo = this.state.imagePath ?     //se houver imagem, ela é renderizada, se não, se renderiza 'imageupload.jpg'
             <View style={{ flex:1, }}>
                 <Image
                     source={{ uri:this.state.imagePath }}
@@ -127,13 +126,13 @@ export default class CadastrarPerfil extends Component{
                         borderRadius: 5,
                     }}
                 />
-            </View>;
+            </View>;*/
 
         return (
             <Container>
                 <Content padder contentContainerStyle={estilo.principal}>
                     {/*<Image source={require('../../../assets/imageupload.jpg')} style={estilo.imagem}/>*/}
-                    {photo}
+                    {/*photo*/}
                     <Form>
                         <Item floatingLabel>
                             <Label>Nome do estabelecimento</Label>

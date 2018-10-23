@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label } from 'native-base';
+import { Container, Header, Left, Body, Right, Title, Content, Button, Text, Form, Item, Input, Label, List, ListItem } from 'native-base';
 import { StyleSheet, Image} from 'react-native';
 import firebase from 'react-native-firebase';
 import {estilo_global} from "../../css/style_global";
@@ -13,40 +13,53 @@ export default class Cardapio extends Component{
         super();
         this.ref = firebase.firestore().collection('fornecedores');
         this.state = {
-            fornecedor : ''
+            fornecedor : '',
+            cardapio: [],
         };
     }
 
     componentWillMount() {
         const {user} = this.props.navigation.state.params;
+        console.log('Cardapio - User -> ' + user.uid);
         this.ref.doc(user.uid).collection('cardapio').get()
             .then(querySnapshot => {
                 if (querySnapshot.empty) {
-                    console.log('No such document!');
+                    console.log('Nenhuma categoria cadastrada!');
                 } else {
                     let cardapio = [];
-                    querySnapshot.forEach((doc) => {
-                        console.log(doc.id, " => ", doc.data());
-                        const {nome} = doc.data();
-
-                        this.ref.doc(user.uid).collection('cardapio').doc(doc.id).collection('itens').get()
+                    querySnapshot.forEach((categoriaDoc) => {
+                        console.log(categoriaDoc.id, " => ", categoriaDoc.data());
+                        const {nome} = categoriaDoc.data();
+                        let categoria = {
+                            nome: nome,
+                        };
+                        this.ref.doc(user.uid).collection('cardapio').doc(categoriaDoc.id).collection('itens').get()
                             .then(querySnapshot => {
-                                let categoria = {
-                                    nome: nome
-                                };
+
+                                if (querySnapshot.empty) {
+                                    console.log('Nenhum item cadastrado!');
+                                } else{
+                                    let itens = [];
+                                    querySnapshot.forEach((itemDoc) => {
+                                        console.log(itemDoc.id, " => ", itemDoc.data());
+                                        const {nome, valor} = itemDoc.data();
+                                        itens.push({
+                                            nome: nome,
+                                            valor: (valor*100),
+                                        })
+                                    });
+                                    categoria.itens = itens;
+                                }
                             })
                             .catch(err => {
                                 console.log('Error getting document', err);
                             });
-
-
                         cardapio.push(
-
+                            categoria
                         );
-
                     });
                     this.setState({
-                        cardapio: cardapio
+                        cardapio: cardapio,
                     });
                 }
             })
@@ -57,26 +70,34 @@ export default class Cardapio extends Component{
 
     _cadastrarCategoria = () => {
         const {user} = this.props.navigation.state.params;
-        user.name = this.state.name;
-        user.desc = this.state.desc;
         console.log('User - cadastrarCategoria  ' + user);
         this.props.navigation.navigate('CadastrarCategoria', { user: user});
     };
 
     render(){
-        const cardapio = this.state.cardapio;
         const isEmpty = this.state.cardapio.length <= 0;
         return(
             <Container>
-                <Content padder contentContainerStyle={estilo.principal}>
                     {isEmpty ? (
-                        <Button onPress={this._cadastrarCategoria} full style={estilo.botao}>
-                            <Text>Cadastrar categoria</Text>
-                        </Button>
+                        <Content padder contentContainerStyle={estilo.principal}>
+                            <Button onPress={this._cadastrarCategoria} full style={estilo.botao}>
+                                <Text>Cadastrar categoria</Text>
+                            </Button>
+                        </Content>
                     ) : (
-                        <Text> Lista </Text>
+                        <Content padder contentContainerStyle={estilo.principal}>
+                            <List>
+                                {this.state.cardapio.map(categoria => (
+                                    <ListItem key={categoria.nome}>
+                                        <Text>{categoria.nome}</Text>
+                                    </ListItem>
+                                ))}
+                            </List>
+                            <Button onPress={this._cadastrarCategoria} full style={estilo.botao}>
+                                <Text>Cadastrar categoria</Text>
+                            </Button>
+                        </Content>
                     )}
-                </Content>
             </Container>
         )
     }
