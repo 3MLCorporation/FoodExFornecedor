@@ -13,15 +13,25 @@ export default class Cardapio extends Component{
         super();
         this.ref = firebase.firestore().collection('fornecedores');
         this.state = {
+            user: firebase.auth().currentUser,
             fornecedor : '',
             cardapio: [],
         };
+        console.disableYellowBox = true;
     }
 
     componentWillMount() {
         const {user} = this.props.navigation.state.params;
         console.log('Cardapio - User -> ' + user.uid);
-        this.ref.doc(user.uid).collection('cardapio').get()
+        this.setState({
+           user: user,
+        });
+       // this._getCardapio();
+    }
+
+    _getCardapio = () =>{
+        console.log('***getCardapio chamado***');
+        this.ref.doc(this.state.user.uid).collection('cardapio').get()
             .then(querySnapshot => {
                 if (querySnapshot.empty) {
                     console.log('Nenhuma categoria cadastrada!');
@@ -33,7 +43,7 @@ export default class Cardapio extends Component{
                         let categoria = {
                             nome: nome,
                         };
-                        this.ref.doc(user.uid).collection('cardapio').doc(categoriaDoc.id).collection('itens').get()
+                        this.ref.doc(this.state.user.uid).collection('cardapio').doc(categoriaDoc.id).collection('itens').get()
                             .then(querySnapshot => {
 
                                 if (querySnapshot.empty) {
@@ -66,15 +76,25 @@ export default class Cardapio extends Component{
             .catch(err => {
                 console.log('Error getting document', err);
             });
-    }
-
-    _cadastrarCategoria = () => {
-        const {user} = this.props.navigation.state.params;
-        console.log('User - cadastrarCategoria  ' + user);
-        this.props.navigation.navigate('CadastrarCategoria', { user: user});
     };
 
+    _cadastrarCategoria = () => {
+        //const {user} = this.props.navigation.state.params;
+       //console.log('User - cadastrarCategoria  ' + user);
+        this.props.navigation.navigate('CadastrarCategoria', {
+            user: this.state.user
+        });
+    };
+    componentWillUnmount() {
+        this.willFocus.remove();
+    }
     render(){
+        this.willFocus = this.props.navigation.addListener(
+            'willFocus',
+            () => {
+                this._getCardapio()
+            }
+        );
         const isEmpty = this.state.cardapio.length <= 0;
         return(
             <Container>

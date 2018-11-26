@@ -26,6 +26,7 @@ class Perfil extends Component{
         this.state = {
             fornecedor : ''
         };
+        console.disableYellowBox = true;
     }
 
     componentWillMount(){

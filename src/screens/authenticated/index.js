@@ -23,7 +23,7 @@ export default createStackNavigator({
     CadastrarCategoria: {
         screen: CadastrarCategoria,
         navigationOptions: () => ({
-            header: <NavigationOptionsLog titulo="Cadastrar categoria"/>
+            header: <NavigationOptionsLog titulo="Categoria"/>
         }),
     },
     CadastrarItem: {

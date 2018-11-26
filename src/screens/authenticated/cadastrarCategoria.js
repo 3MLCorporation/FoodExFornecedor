@@ -13,6 +13,7 @@ export default class CadastrarCategoria extends Component{
         this.state = {
             nome: '',
         };
+        console.disableYellowBox = true;
     }
 
     _updateNome = nome => {
@@ -38,7 +39,6 @@ export default class CadastrarCategoria extends Component{
         return(
             <Container>
                 <Content padder contentContainerStyle={estilo.principal}>
-                    <Text style={estilo.titulo}>kkkkkkkj</Text>
                     <Form>
                         <Item floatingLabel>
                             <Label>Nome</Label>
