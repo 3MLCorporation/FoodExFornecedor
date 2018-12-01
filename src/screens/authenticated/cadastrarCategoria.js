@@ -15,7 +15,7 @@ export default class CadastrarCategoria extends Component{
         };
         console.disableYellowBox = true;
     }
-
+    
     _updateNome = nome => {
         this.setState({ nome });
     };

@@ -27,8 +27,7 @@ export const estilo_global = {
     imagem: {
         width: 300,
         height: 250,
-        marginLeft: 45,
-        marginTop: 30
+        padding: 16,
     },
     botao:{
         backgroundColor: '#f78f03',
