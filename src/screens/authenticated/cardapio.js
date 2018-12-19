@@ -64,6 +64,9 @@ export default class Cardapio extends Component{
             .then(querySnapshot => {
                 if (querySnapshot.empty) {
                     console.log('Nenhum item cadastrado!');
+                    this.setState({
+                        loading: false,
+                    });
                 } else {
                     let cardapio = [];
                     querySnapshot.forEach((itemDoc) => {
